@@ -13,6 +13,9 @@ const createCashfreeSession = async (req, res) => {
       amount,
       profession,
       remarks,
+      placeOfBirth = "",
+      dateOfBirth = "",
+      gender="",
       additionalProducts,
       orderType = "normal",
       url,
@@ -36,7 +39,7 @@ const createCashfreeSession = async (req, res) => {
     );
     console.log("Order ID:", orderId);
 
-    let returnUrl = `${finalUrl}?orderId=${orderId}&orderType=${orderType}&fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phoneNumber=${encodeURIComponent(phoneNumber)}&amount=${amount}&profession=${encodeURIComponent(profession)}&remarks=${encodeURIComponent(remarks)}&additionalProducts=${encodeURIComponent(additionalProducts ? additionalProducts.join(",") : "")}`;
+    let returnUrl = `${finalUrl}?orderId=${orderId}&orderType=${orderType}&fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phoneNumber=${encodeURIComponent(phoneNumber)}&amount=${amount}&profession=${encodeURIComponent(profession)}&remarks=${encodeURIComponent(remarks)}&additionalProducts=${encodeURIComponent(additionalProducts ? additionalProducts.join(",") : "")}&placeOfBirth=${encodeURIComponent(placeOfBirth)}&dateOfBirth=${encodeURIComponent(dateOfBirth)}&gender=${encodeURIComponent(gender)}`;
 
     const requestData = {
       order_id: orderId,
