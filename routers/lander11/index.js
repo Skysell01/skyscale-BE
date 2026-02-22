@@ -123,20 +123,20 @@ router.post("/create-order", async (req, res) => {
   } = req.body;
 
   try {
-    const hmac = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
-    hmac.update(razorpayOrderId + "|" + razorpayPaymentId);
-    const generatedSignature = hmac.digest("hex");
+    // const hmac = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
+    // hmac.update(razorpayOrderId + "|" + razorpayPaymentId);
+    // const generatedSignature = hmac.digest("hex");
 
-    if (generatedSignature !== razorpaySignature) {
-      return res.status(400).json({
-        success: false,
-        data: null,
-        message: "Invalid Payment",
-      });
-    }
+    // if (generatedSignature !== razorpaySignature) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     data: null,
+    //     message: "Invalid Payment",
+    //   });
+    // }
 
     const existingOrder = await orderModel11.findOne({ orderId });
-      if (existingOrder) {
+    if (existingOrder) {
       return res.status(200).json({
         success: true,
         data: existingOrder,
