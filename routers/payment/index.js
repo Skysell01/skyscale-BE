@@ -25,6 +25,8 @@ router.post("/razorpay", async (req, res) => {
       },
     });
   } catch (error) {
+      console.error("FULL ERROR OBJECT:", error);
+  console.error("ERROR RESPONSE:", error?.response?.data);
     return res.status(500).json({ error: error.message });
   }
 });
